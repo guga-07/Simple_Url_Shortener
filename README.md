@@ -1,4 +1,4 @@
-# URL Shortener App (Rust)
+# URL Shortener App 
 
 A simple backend application written in Rust that converts long URLs into short, easy-to-share links and redirects users back to the original address.
 This project was built while learning Axum and backend core development concepts.
@@ -24,7 +24,7 @@ The focus is on simplicity, performance, and understanding how backend systems w
 
 * Language: Rust
 * Framework: Actix Web 
-* Database: SQLite
+* Database: SQLite Postgresql in future? 
 ## Installation
 * git clone https://github.com/guga-07/Simple_Url_Shortener.git
 * cd Simple_Url_Shortener
