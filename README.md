@@ -26,7 +26,9 @@ The focus is on simplicity, performance, and understanding how backend systems w
 * Framework: Actix Web 
 * Database: SQLite
 ## Installation
-
+* git clone https://github.com/guga-07/Simple_Url_Shortener.git
+* cd Simple_Url_Shortener
+* cargo run
 
 ## License
 
