@@ -15,7 +15,8 @@ type AppState = SqlitePool;
 #[tokio::main]
 async fn main() {
     //let state: AppState = Arc::new(Mutex::new(HashMap::new()));
-    let state: AppState = SqlitePool::connect("sqlite:urls.db").await.unwrap();
+    let state: AppState = SqlitePool::connect("sqlite:urls.db?mode=rwc").await.unwrap();
+
 
     sqlx::query(
         "CREATE TABLE IF NOT EXISTS links (
