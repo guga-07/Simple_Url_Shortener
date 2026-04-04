@@ -9,6 +9,8 @@ use handlers::links::{create_link, delete_link, get_stats, redirect};
 //use std::sync::{Arc, Mutex};
 use sqlx::SqlitePool;
 use tokio::net::TcpListener;
+use tower_http::trace::TraceLayer;
+
 
 //type AppState = Arc<Mutex<HashMap<String, StoredLink>>>;
 type AppState = SqlitePool;
@@ -28,12 +30,15 @@ async fn main() {
     .execute(&state)
     .await
     .unwrap();
+    tracing_subscriber::fmt::init();
+
 
     let app = Router::new()
         .route("/shorten", post(create_link))
         .route("/{code}", get(redirect))
         .route("/stats/{code}", get(get_stats))
         .route("/{code}", delete(delete_link))
+        .layer(TraceLayer::new_for_http())
         .with_state(state);
 
     let listener = TcpListener::bind("0.0.0.0:8080").await.unwrap();
