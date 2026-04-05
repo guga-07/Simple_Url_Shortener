@@ -25,6 +25,6 @@ pub async fn register(
         .await
     {
         Ok(_) => Ok(StatusCode::CREATED),
-        Err(err) => Err((StatusCode::BAD_REQUEST, String::from("cant register user"))),
+        Err(_) => Err((StatusCode::BAD_REQUEST, String::from("cant register user"))),
     }
 }
