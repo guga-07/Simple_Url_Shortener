@@ -143,6 +143,9 @@ pub async fn delete_link(
     if result.rows_affected() > 0 {
         Ok(StatusCode::NO_CONTENT)
     } else {
-        Err((StatusCode::NOT_FOUND, String::from("link not found")))
+        Err((
+            StatusCode::NOT_FOUND,
+            String::from("not found link to delete "),
+        ))
     }
 }
