@@ -13,15 +13,11 @@ pub struct CreateLink {
 }
 
 #[derive(Deserialize)]
-pub struct RegisterUser {
+pub struct AuthUser {
     pub email: String,
     pub password: String,
 }
-#[derive(Deserialize)]
-pub struct LoginUser {
-    pub email: String,
-    pub password: String,
-}
+
 
 #[derive(Serialize, sqlx::FromRow)]
 pub struct User {

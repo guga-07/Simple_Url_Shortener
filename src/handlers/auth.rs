@@ -1,7 +1,7 @@
 use std::hash::Hash;
 
 use crate::AppState;
-use crate::models::{LoginUser, RegisterUser, User};
+use crate::models::{AuthUser,  User};
 use axum::Json;
 use axum::extract::State;
 use axum::http::StatusCode;
@@ -11,7 +11,7 @@ use tokio::task;
 
 pub async fn register(
     State(state): State<AppState>,
-    Json(body): Json<RegisterUser>,
+    Json(body): Json<AuthUser>,
 ) -> Result<StatusCode, (StatusCode, String)> {
     let hashed_password = task::spawn_blocking(move || hash(&body.password, DEFAULT_COST))
         .await
